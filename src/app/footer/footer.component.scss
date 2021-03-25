@@ -1,0 +1,21 @@
+.footer {
+  padding: 0rem 0.5rem;
+  height: 5vh;
+  background-color: var(--color-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 10px;
+  color: var(--color-details);
+
+  &__author {
+    font-family: var(--font-main);
+  }
+
+  &__link {
+    color: var(--color-details);
+  }
+}

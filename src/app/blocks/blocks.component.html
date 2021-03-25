@@ -1,0 +1,14 @@
+<section class="blocks limiter">
+  <div *ngFor="let blocksNum of sortedDataset" class="block">
+    <div
+      *ngFor="let blocksNum of getBlockPartsArray(blocksNum)"
+      class="block__part"
+    ></div>
+  </div>
+  <div *ngFor="let blocksNum of dataset" class="block">
+    <div
+      *ngFor="let blocksNum of getBlockPartsArray(blocksNum)"
+      class="block__part"
+    ></div>
+  </div>
+</section>

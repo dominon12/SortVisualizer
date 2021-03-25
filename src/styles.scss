@@ -1,0 +1,21 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css");
+@import url("https://fonts.googleapis.com/css2?family=Pangolin&display=swap");
+
+body {
+  background-color: var(--color-main);
+}
+
+.limiter {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.btn {
+  background-color: var(--color-details);
+  color: var(--color-text);
+  border: none;
+  padding: 0 0.5rem;
+  height: 34px;
+  border-radius: 10px;
+  font-family: var(--font-main);
+}

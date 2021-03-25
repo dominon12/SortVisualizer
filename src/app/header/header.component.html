@@ -1,0 +1,14 @@
+<header class="header limiter">
+  <button class="btn" (click)="sort()">Sort</button>
+  <button class="btn" (click)="setData()">Randomize</button>
+  <form [formGroup]="algorythmSelectForm">
+    <select class="btn" formControlName="algorythm">
+      <option
+        *ngFor="let algorythm of algorythms; let index = index"
+        [value]="index"
+      >
+        {{ algorythm.toString() }}
+      </option>
+    </select>
+  </form>
+</header>

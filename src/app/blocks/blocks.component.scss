@@ -1,0 +1,35 @@
+.blocks {
+  display: flex;
+  justify-content: space-between;
+  height: 80vh;
+  background-color: var(--color-secondary);
+  padding: 0.5rem;
+  border-radius: 10px;
+  @media (max-width: 640px) {
+    flex-direction: column;
+  }
+}
+
+.block {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 0.8%;
+
+  @media (max-width: 640px) {
+    flex-direction: row;
+    width: 100%;
+    height: 0.5%;
+  }
+
+  &__part {
+    width: 100%;
+    height: 1.3%;
+    background-color: var(--color-details);
+
+    @media (max-width: 640px) {
+      width: 1.3%;
+      height: 100%;
+    }
+  }
+}
