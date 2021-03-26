@@ -3,6 +3,16 @@
 
 body {
   background-color: var(--color-main);
+  font-family: var(--font-main);
+}
+
+a {
+  color: var(--color-details);
+}
+
+::selection {
+  color: var(--color-main);
+  background: #ffffff;
 }
 
 .limiter {

@@ -24,6 +24,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  localStorageKey: string = 'algorythmIndex';
   algorythmSelectForm: FormGroup;
   selectedAlgorythm: any;
   algorythms = [
@@ -49,33 +50,51 @@ export class HeaderComponent implements OnInit {
   ) {
     this.selectedAlgorythm = this.algorythms[0];
     this.algorythmSelectForm = this._fb.group({
-      algorythm: [0],
+      algorythm: [this.savedAlgorythmIndex],
     });
   }
 
   ngOnInit(): void {
     this.subscribeToAlgorythmSelecting();
-    this.setData();
-    this.setAlgorythm(this.algorythms[0]);
+    this.setData(this.savedAlgorythmIndex);
+  }
+
+  get savedAlgorythmIndex() {
+    let algorythmIndex = localStorage.getItem(this.localStorageKey);
+    return algorythmIndex === null ? 0 : parseInt(algorythmIndex);
   }
 
   subscribeToAlgorythmSelecting() {
     this.algorythmSelectForm.valueChanges.subscribe((algorythm) => {
       let algorythmIndex = parseInt(algorythm.algorythm);
-      this.setData();
-      this.setAlgorythm(this.algorythms[algorythmIndex]);
+      this.setData(algorythmIndex);
     });
-  }
-
-  public setAlgorythm(algorythm: any): void {
-    this._sharedSerice.selectedAlgorythm.next(algorythm);
   }
 
   public sort(): void {
     this._sharedSerice.command.next('sort');
   }
 
-  public setData(): void {
+  counter = 0;
+
+  public setData(savedAlgorythmIndex: number | null): void {
     this._sharedSerice.command.next('setData');
+    console.log(`water ${this.counter}`);
+    this.counter++;
+    console.log(savedAlgorythmIndex);
+    if (savedAlgorythmIndex !== null) {
+      console.log(`fire ${this.counter}`);
+      this.setAlgorythm(this.algorythms[savedAlgorythmIndex]);
+      this.saveToLocalstorage(savedAlgorythmIndex);
+      this.counter++;
+    }
+  }
+
+  saveToLocalstorage(algorythmIndex: number) {
+    localStorage.setItem(this.localStorageKey, algorythmIndex.toString());
+  }
+
+  public setAlgorythm(algorythm: any): void {
+    this._sharedSerice.selectedAlgorythm.next(algorythm);
   }
 }

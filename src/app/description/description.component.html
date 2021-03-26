@@ -1,0 +1,42 @@
+<article class="description limiter">
+  <div class="description__left">
+    <div class="description__part">
+      <h2 class="description__title">How does it work?</h2>
+      <div
+        class="description__content"
+        [innerHTML]="selectedAlgorythm.description"
+      ></div>
+      <div class="description__source">
+        <strong>Source: </strong>
+        <ng-container
+          *ngFor="let source of selectedAlgorythm.sources; let index = index"
+        >
+          <a [href]="source" target="_blank" [innerHTML]="source"></a>
+          <ng-container
+            *ngIf="
+              selectedAlgorythm.sources.length !== 1 &&
+              index + 1 !== selectedAlgorythm.sources.length
+            "
+            >,
+          </ng-container>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  <div class="description__right">
+    <div class="description__part">
+      <h2 class="description__title">Specifications</h2>
+      <div
+        class="description__content"
+        [innerHTML]="selectedAlgorythm.specifications"
+      ></div>
+    </div>
+    <div class="description__part">
+      <h2 class="description__title">Python Code</h2>
+      <div
+        class="description__content"
+        [innerHTML]="selectedAlgorythm.code"
+      ></div>
+    </div>
+  </div>
+</article>
