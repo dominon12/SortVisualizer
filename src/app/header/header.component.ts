@@ -79,14 +79,9 @@ export class HeaderComponent implements OnInit {
 
   public setData(savedAlgorythmIndex: number | null): void {
     this._sharedSerice.command.next('setData');
-    console.log(`water ${this.counter}`);
-    this.counter++;
-    console.log(savedAlgorythmIndex);
     if (savedAlgorythmIndex !== null) {
-      console.log(`fire ${this.counter}`);
       this.setAlgorythm(this.algorythms[savedAlgorythmIndex]);
       this.saveToLocalstorage(savedAlgorythmIndex);
-      this.counter++;
     }
   }
 
