@@ -342,7 +342,7 @@ export class HeapSort extends SortAlgorythm {
     <p>
       Let us first define a Complete Binary Tree. A complete binary tree is a binary tree in which every level, 
       except possibly the last, is completely filled, and all nodes are as far left as possible 
-      (Source <a href="http://en.wikipedia.org/wiki/Binary_tree#Types_of_binary_trees" target="_blank">Wikipedia</a>)
+      (Source <a href="http://en.wikipedia.org/wiki/Binary_tree#Types_of_binary_trees" target="_blank" rel="noreferrer">Wikipedia</a>)
       A Binary Heap is a Complete Binary Tree where items are stored in a special order such that 
       value in a parent node is greater(or smaller) than the values in its two children nodes. 
       The former is called as max heap and the latter is called min-heap. The heap can be represented 
@@ -952,7 +952,7 @@ export class CycleSort extends SortAlgorythm {
   static description: string = `
     <p>
       Cycle sort is an in-place sorting Algorithm, 
-      <a href="https://en.wikipedia.org/wiki/Sorting_algorithm#Stability" target="_blank">unstable sorting algorithm</a>, 
+      <a href="https://en.wikipedia.org/wiki/Sorting_algorithm#Stability" target="_blank" rel="noreferrer">unstable sorting algorithm</a>, 
       a comparison sort that is theoretically optimal in terms of the total 
       number of writes to the original array. 
     </p>
@@ -1171,6 +1171,7 @@ def gnome_sort(arr, n):
 
   sort(): void {
     let arrayLength = this.dataset.length;
+    let counter = 1;
     let index = 0;
     let interval = setInterval(() => {
       if (index === 0 || this.dataset[index] >= this.dataset[index - 1]) {
@@ -1181,11 +1182,12 @@ def gnome_sort(arr, n):
         this.dataset[index - 1] = temp;
         index--;
       }
+      counter++;
 
       if (index >= arrayLength) {
         clearInterval(interval);
       }
-    }, this.animationSpeed / 100);
+    }, this.animationSpeed / (counter * 1000000));
   }
 
   static toString() {
@@ -1206,7 +1208,7 @@ export class CombSort extends SortAlgorythm {
     </p>
     <p>
       The shrink factor has been empirically found to be 1.3 
-      (by <a href="https://en.wikipedia.org/wiki/Comb_sort" target="_blank">testing Combsort</a> 
+      (by <a href="https://en.wikipedia.org/wiki/Comb_sort" target="_blank" rel="noreferrer">testing Combsort</a> 
       on over 200,000 random lists)
     </p>
     <p>

@@ -11,7 +11,7 @@
         <ng-container
           *ngFor="let source of selectedAlgorythm.sources; let index = index"
         >
-          <a [href]="source" target="_blank" [innerHTML]="source"></a>
+          <a [href]="source" target="_blank" [innerHTML]="source" rel="noopener"></a>
           <ng-container
             *ngIf="
               selectedAlgorythm.sources.length !== 1 &&
