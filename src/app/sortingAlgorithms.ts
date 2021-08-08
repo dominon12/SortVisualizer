@@ -1,11 +1,11 @@
-export interface ISortAlgorythm {
+export interface ISortingAlgorithm {
   sortedDataset: number[];
   animationSpeed: number;
   dataset: number[];
   sort: () => void;
 }
 
-export abstract class SortAlgorythm implements ISortAlgorythm {
+export abstract class SortingAlgorithm implements ISortingAlgorithm {
   dataset: number[];
   sortedDataset: number[];
   animationSpeed: number;
@@ -21,10 +21,14 @@ export abstract class SortAlgorythm implements ISortAlgorythm {
   }
 
   abstract sort(): void;
+  
   static description: string;
+  static specifications: string;
+  static code: string;
+  static sources: string[];
 }
 
-export class SelectionSort extends SortAlgorythm {
+export class SelectionSort extends SortingAlgorithm {
   static description: string = `
     <p>
       The selection sort algorithm sorts an array by repeatedly finding the
@@ -115,7 +119,7 @@ def selection_sort(arr):
   }
 }
 
-export class BubbleSort extends SortAlgorythm {
+export class BubbleSort extends SortingAlgorithm {
   static description: string = `
     <p>
       Bubble Sort is the simplest sorting algorithm that works 
@@ -215,7 +219,7 @@ def bubble_sort(arr):
   }
 }
 
-export class InsertionSort extends SortAlgorythm {
+export class InsertionSort extends SortingAlgorithm {
   static description: string = `
     <p>
       Insertion sort is a simple sorting algorithm 
@@ -329,7 +333,7 @@ def insertion_sort(arr):
   }
 }
 
-export class HeapSort extends SortAlgorythm {
+export class HeapSort extends SortingAlgorithm {
   static description: string = `
     <p>
       Heap sort is a comparison based sorting 
@@ -508,7 +512,7 @@ def heap_sort(arr):
   }
 }
 
-export class ShellSort extends SortAlgorythm {
+export class ShellSort extends SortingAlgorithm {
   static description: string = `
     <p>
       ShellSort is mainly a variation of Insertion Sort. In insertion sort, 
@@ -585,7 +589,7 @@ def shell_sort(arr):
   }
 }
 
-export class CountingSort extends SortAlgorythm {
+export class CountingSort extends SortingAlgorithm {
   static description: string = `
     <p>
       Counting sort is a sorting technique based on keys between a specific range. 
@@ -689,7 +693,7 @@ def count_sort(arr):
   }
 }
 
-export class OddEvenSort extends SortAlgorythm {
+export class OddEvenSort extends SortingAlgorithm {
   static description: string = `
     <p>
       This is basically a variation of bubble-sort. This algorithm is
@@ -769,7 +773,7 @@ def odd_even_sort(arr, n):
   }
 }
 
-export class CoctailSort extends SortAlgorythm {
+export class CocktailSort extends SortingAlgorithm {
   static description: string = `
   <p>
     Cocktail Sort is a variation of Bubble sort. 
@@ -944,11 +948,11 @@ def cocktail_sort(a):
   }
 
   static toString() {
-    return 'Coctail Sort';
+    return 'Cocktail Sort';
   }
 }
 
-export class CycleSort extends SortAlgorythm {
+export class CycleSort extends SortingAlgorithm {
   static description: string = `
     <p>
       Cycle sort is an in-place sorting Algorithm, 
@@ -1091,7 +1095,7 @@ def cycle_sort(array):
   }
 }
 
-export class GnomeSort extends SortAlgorythm {
+export class GnomeSort extends SortingAlgorithm {
   static description: string = `
     <p>
       Gnome Sort also called Stupid sort is based on 
@@ -1195,7 +1199,7 @@ def gnome_sort(arr, n):
   }
 }
 
-export class CombSort extends SortAlgorythm {
+export class CombSort extends SortingAlgorithm {
   static description: string = `
     <p>
       Comb Sort is mainly an improvement over Bubble Sort. 
@@ -1204,7 +1208,7 @@ export class CombSort extends SortAlgorythm {
       size more than 1. The gap starts with a large value and shrinks by a 
       factor of 1.3 in every iteration until it reaches the value 1. 
       Thus Comb Sort removes more than one inversion counts with one swap 
-      and performs better than Bublle Sort.
+      and performs better than Bubble Sort.
     </p>
     <p>
       The shrink factor has been empirically found to be 1.3 
@@ -1352,7 +1356,7 @@ def comb_sort(arr):
   }
 }
 
-export class BogoSort extends SortAlgorythm {
+export class BogoSort extends SortingAlgorithm {
   static description: string = `
     <p>
       BogoSort also known as permutation sort, stupid sort, slow sort, 
@@ -1395,13 +1399,13 @@ done
   `;
   static specifications: string = `
   <p>
-  &#9;<b>Worst Case</b>: O(∞) (since this algorithm has no upper bound)  
+    &#9;<b>Worst Case</b>: O(∞) (since this algorithm has no upper bound)  
   </p>
   <p>
-  &#9;<b>Average Case</b>: O(n*n!)  
+    &#9;<b>Average Case</b>: O(n*n!)  
   </p>
   <p>
-  &#9;<b>Best Case</b>: O(n)(when array given is already sorted)  
+    &#9;<b>Best Case</b>: O(n)(when array given is already sorted)  
   </p> <br>
   <p>
    <b>Auxiliary Space</b>: O(1)  
@@ -1469,7 +1473,7 @@ def shuffle(a):
   }
 }
 
-export class PancakeSort extends SortAlgorythm {
+export class PancakeSort extends SortingAlgorithm {
   static description: string = `
     <p>
       How to sort an array if you are allowed to do only following operation on array:
@@ -1486,7 +1490,7 @@ export class PancakeSort extends SortAlgorythm {
       The idea is to do something similar to Selection Sort. We one by one 
       place maximum element at the end and reduce the size of current array by one. 
     </p>
-    <h3>Algorythm:</h3>
+    <h3>Algorithm:</h3>
     <ul>
       <li>
         Start from current size equal to n and reduce current size by one 
@@ -1611,7 +1615,7 @@ def pancake_sort(arr, n):
   }
 }
 
-export class StoogeSort extends SortAlgorythm {
+export class StoogeSort extends SortingAlgorithm {
   static description: string = `
     <p>
       The Stooge sort is a recursive sorting algorithm. 
@@ -1725,3 +1729,19 @@ def stooge_sort(arr, l, h):
     return 'Stooge Sort';
   }
 }
+
+// export class TimeSort extends SortingAlgorithm {
+//   sort(): void {
+//     this.dataset.forEach((item) => {
+//       setTimeout(() => {
+//         this.sortedDataset.push(item);
+//         let itemIndex = this.dataset.indexOf(item);
+//         this.dataset.splice(itemIndex, 1);
+//       }, item * this.animationSpeed);
+//     });
+//   }
+
+//   static toString() {
+//     return 'Time Sort';
+//   }
+// }

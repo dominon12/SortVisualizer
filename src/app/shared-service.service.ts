@@ -1,4 +1,4 @@
-import { ISortAlgorythm, BubbleSort } from './sortAlgorythms';
+import { ISortingAlgorithm, BubbleSort } from './sortingAlgorithms';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
@@ -7,7 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class SharedServiceService {
   command: BehaviorSubject<string> = new BehaviorSubject('')
-  selectedAlgorythm: BehaviorSubject<any> = new BehaviorSubject(BubbleSort);
+  selectedAlgorithm: BehaviorSubject<any> = new BehaviorSubject(BubbleSort);
 
   constructor() {}
 }

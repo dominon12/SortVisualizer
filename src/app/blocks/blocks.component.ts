@@ -1,4 +1,4 @@
-import { ISortAlgorythm } from './../sortAlgorythms';
+import { ISortingAlgorithm } from '../sortingAlgorithms';
 import { SharedServiceService } from './../shared-service.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,26 +8,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./blocks.component.scss'],
 })
 export class BlocksComponent implements OnInit {
-  selectedAlgorythm: ISortAlgorythm | undefined;
+  selectedAlgorithm: ISortingAlgorithm | undefined;
   sortedDataset: number[] = [];
   dataset: number[] = [];
   datasetSize: number = 80;
   animationSpeed: number = 50;
 
-  constructor(private _sharedSerice: SharedServiceService) {
+  constructor(private _sharedService: SharedServiceService) {
     this.subscribeToSharedData();
   }
 
   ngOnInit(): void {}
 
   subscribeToSharedData() {
-    this.subscribeToAlgorythmSelecting();
+    this.subscribeToAlgorithmSelecting();
     this.subscribeToCommands();
   }
 
-  subscribeToAlgorythmSelecting() {
-    this._sharedSerice.selectedAlgorythm.subscribe((algorythm: any) => {
-      this.selectedAlgorythm = new algorythm(
+  subscribeToAlgorithmSelecting() {
+    this._sharedService.selectedAlgorithm.subscribe((algorithm: any) => {
+      this.selectedAlgorithm = new algorithm(
         this.dataset,
         this.sortedDataset,
         this.animationSpeed
@@ -36,14 +36,14 @@ export class BlocksComponent implements OnInit {
   }
 
   subscribeToCommands() {
-    this._sharedSerice.command.subscribe((command) => {
-      if (this.selectedAlgorythm) {
+    this._sharedService.command.subscribe((command) => {
+      if (this.selectedAlgorithm) {
         if (command === 'sort') {
-          this.selectedAlgorythm.sort();
+          this.selectedAlgorithm.sort();
         } else if (command === 'setData') {
           this.setData();
-          this.selectedAlgorythm.dataset = this.dataset;
-          this.selectedAlgorythm.sortedDataset = this.sortedDataset;
+          this.selectedAlgorithm.dataset = this.dataset;
+          this.selectedAlgorithm.sortedDataset = this.sortedDataset;
         }
       }
     });

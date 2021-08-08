@@ -1,3 +1,6 @@
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+
 import {
   BubbleSort,
   InsertionSort,
@@ -6,17 +9,16 @@ import {
   ShellSort,
   CountingSort,
   OddEvenSort,
-  CoctailSort,
+  CocktailSort,
   CycleSort,
   GnomeSort,
   CombSort,
   BogoSort,
   PancakeSort,
   StoogeSort,
-} from './../sortAlgorythms';
+  // TimeSort,
+} from '../sortingAlgorithms';
 import { SharedServiceService } from './../shared-service.service';
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-header',
@@ -24,10 +26,10 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  localStorageKey: string = 'algorythmIndex';
-  algorythmSelectForm: FormGroup;
-  selectedAlgorythm: any;
-  algorythms = [
+  localStorageKey: string = 'algorithmIndex';
+  algorithmSelectForm: FormGroup;
+  selectedAlgorithm: any;
+  algorithms = [
     SelectionSort,
     BubbleSort,
     InsertionSort,
@@ -35,61 +37,60 @@ export class HeaderComponent implements OnInit {
     ShellSort,
     CountingSort,
     OddEvenSort,
-    CoctailSort,
+    CocktailSort,
     CycleSort,
     GnomeSort,
     CombSort,
     BogoSort,
     PancakeSort,
     StoogeSort,
+    // TimeSort,
   ];
 
   constructor(
-    private _sharedSerice: SharedServiceService,
+    private _sharedService: SharedServiceService,
     private _fb: FormBuilder
   ) {
-    this.selectedAlgorythm = this.algorythms[0];
-    this.algorythmSelectForm = this._fb.group({
-      algorythm: [this.savedAlgorythmIndex],
+    this.selectedAlgorithm = this.algorithms[0];
+    this.algorithmSelectForm = this._fb.group({
+      algorithm: [this.savedAlgorithmIndex],
     });
   }
 
   ngOnInit(): void {
-    this.subscribeToAlgorythmSelecting();
-    this.setData(this.savedAlgorythmIndex);
+    this.subscribeToAlgorithmSelecting();
+    this.setData(this.savedAlgorithmIndex);
   }
 
-  get savedAlgorythmIndex() {
-    let algorythmIndex = localStorage.getItem(this.localStorageKey);
-    return algorythmIndex === null ? 0 : parseInt(algorythmIndex);
+  get savedAlgorithmIndex() {
+    let algorithmIndex = localStorage.getItem(this.localStorageKey);
+    return algorithmIndex === null ? 0 : parseInt(algorithmIndex);
   }
 
-  subscribeToAlgorythmSelecting() {
-    this.algorythmSelectForm.valueChanges.subscribe((algorythm) => {
-      let algorythmIndex = parseInt(algorythm.algorythm);
-      this.setData(algorythmIndex);
+  subscribeToAlgorithmSelecting() {
+    this.algorithmSelectForm.valueChanges.subscribe((algorithm) => {
+      let algorithmIndex = parseInt(algorithm.algorithm);
+      this.setData(algorithmIndex);
     });
   }
 
   public sort(): void {
-    this._sharedSerice.command.next('sort');
+    this._sharedService.command.next('sort');
   }
 
-  counter = 0;
-
-  public setData(savedAlgorythmIndex: number | null): void {
-    this._sharedSerice.command.next('setData');
-    if (savedAlgorythmIndex !== null) {
-      this.setAlgorythm(this.algorythms[savedAlgorythmIndex]);
-      this.saveToLocalstorage(savedAlgorythmIndex);
+  public setData(savedAlgorithmIndex: number | null): void {
+    this._sharedService.command.next('setData');
+    if (savedAlgorithmIndex !== null) {
+      this.setAlgorithm(this.algorithms[savedAlgorithmIndex]);
+      this.saveToLocalStorage(savedAlgorithmIndex);
     }
   }
 
-  saveToLocalstorage(algorythmIndex: number) {
-    localStorage.setItem(this.localStorageKey, algorythmIndex.toString());
+  saveToLocalStorage(algorithmIndex: number) {
+    localStorage.setItem(this.localStorageKey, algorithmIndex.toString());
   }
 
-  public setAlgorythm(algorythm: any): void {
-    this._sharedSerice.selectedAlgorythm.next(algorythm);
+  public setAlgorithm(algorithm: any): void {
+    this._sharedService.selectedAlgorithm.next(algorithm);
   }
 }

@@ -1,13 +1,13 @@
 <header class="header limiter">
   <button class="btn" (click)="sort()">Sort</button>
   <button class="btn" (click)="setData(null)">Randomize</button>
-  <form [formGroup]="algorythmSelectForm">
-    <select class="btn" formControlName="algorythm">
+  <form [formGroup]="algorithmSelectForm">
+    <select class="btn" formControlName="algorithm">
       <option
-        *ngFor="let algorythm of algorythms; let index = index"
+        *ngFor="let algorithm of algorithms; let index = index"
         [value]="index"
       >
-        {{ algorythm.toString() }}
+        {{ algorithm.toString() }}
       </option>
     </select>
   </form>

@@ -1,6 +1,6 @@
 import { SharedServiceService } from './../shared-service.service';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { SortAlgorythm } from '../sortAlgorythms';
+import { SortingAlgorithm } from '../sortingAlgorithms';
 
 @Component({
   selector: 'app-description',
@@ -9,18 +9,18 @@ import { SortAlgorythm } from '../sortAlgorythms';
   encapsulation: ViewEncapsulation.None,
 })
 export class DescriptionComponent implements OnInit {
-  selectedAlgorythm: any;
+  selectedAlgorithm: any;
 
   constructor(private _sharedService: SharedServiceService) {}
 
   ngOnInit(): void {
-    this.subscribeToAlgorythmSelecting();
+    this.subscribeToAlgorithmSelecting();
   }
 
-  subscribeToAlgorythmSelecting() {
-    this._sharedService.selectedAlgorythm.subscribe(
-      (algorythm: SortAlgorythm) => {
-        this.selectedAlgorythm = algorythm;
+  subscribeToAlgorithmSelecting() {
+    this._sharedService.selectedAlgorithm.subscribe(
+      (algorithm: SortingAlgorithm) => {
+        this.selectedAlgorithm = algorithm;
       }
     );
   }
