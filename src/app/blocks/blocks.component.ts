@@ -28,6 +28,7 @@ export class BlocksComponent implements OnInit {
 
   subscribeToAlgorithmSelecting() {
     this._sharedService.selectedAlgorithm.subscribe((algorithm: any) => {
+      this.setData();
       this.selectedAlgorithm = new algorithm(
         this.dataset,
         this.sortedDataset,
