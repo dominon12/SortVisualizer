@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ISortingAlgorithm } from 'src/algorithms/SortingAlgorithm';
+import SortingAlgorithm from 'src/algorithms/SortingAlgorithm';
 import { SharedServiceService } from './../shared-service.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { SharedServiceService } from './../shared-service.service';
   styleUrls: ['./blocks.component.scss'],
 })
 export class BlocksComponent implements OnInit {
-  selectedAlgorithm: ISortingAlgorithm | undefined;
+  selectedAlgorithm: SortingAlgorithm | undefined;
   sortedDataset: number[] = [];
   dataset: number[] = [];
   datasetSize: number = 80;
@@ -27,7 +27,7 @@ export class BlocksComponent implements OnInit {
   }
 
   subscribeToAlgorithmSelecting() {
-    this._sharedService.selectedAlgorithm.subscribe((algorithm: any) => {
+    this._sharedService.selectedAlgorithm.subscribe((algorithm) => {
       this.setData();
       this.selectedAlgorithm = new algorithm(
         this.dataset,
@@ -44,8 +44,13 @@ export class BlocksComponent implements OnInit {
           this.selectedAlgorithm.sort();
         } else if (command === 'setData') {
           this.setData();
-          this.selectedAlgorithm.dataset = this.dataset;
-          this.selectedAlgorithm.sortedDataset = this.sortedDataset;
+          this.selectedAlgorithm = new (
+            this.selectedAlgorithm as SortingAlgorithm & { constructor: any }
+          ).constructor();
+          if (this.selectedAlgorithm) {
+            this.selectedAlgorithm.dataset = this.dataset;
+            this.selectedAlgorithm.sortedDataset = this.sortedDataset;
+          }
         }
       }
     });
