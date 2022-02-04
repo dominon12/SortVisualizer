@@ -17,6 +17,7 @@ import { PancakeSort } from 'src/algorithms/PancakeSort';
 import { SelectionSort } from 'src/algorithms/SelectionSort';
 import { ShellSort } from 'src/algorithms/ShellSort';
 import { StoogeSort } from 'src/algorithms/StoogeSort';
+import { QuickSort } from 'src/algorithms/QuickSort';
 
 @Component({
   selector: 'app-header',
@@ -28,20 +29,21 @@ export class HeaderComponent implements OnInit {
   algorithmSelectForm: FormGroup;
   selectedAlgorithm: any;
   algorithms = [
-    SelectionSort,
     BubbleSort,
-    InsertionSort,
-    HeapSort,
-    ShellSort,
-    CountingSort,
-    OddEvenSort,
+    BogoSort,
     CocktailSort,
+    CombSort,
+    CountingSort,
     CycleSort,
     GnomeSort,
-    CombSort,
-    BogoSort,
+    HeapSort,
+    InsertionSort,
+    OddEvenSort,
     PancakeSort,
+    SelectionSort,
+    ShellSort,
     StoogeSort,
+    QuickSort,
   ];
 
   constructor(
