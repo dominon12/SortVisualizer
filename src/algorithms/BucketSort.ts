@@ -4,82 +4,86 @@ import { sleep } from 'src/helpers/helper';
 export default class BucketSort extends SortingAlgorithm {
   static description: string = `
       <p>
-        BogoSort also known as permutation sort, stupid sort, slow sort, 
-        shotgun sort or monkey sort is a particularly ineffective algorithm 
-        based on generate and test paradigm. 
+        Bucket sort is mainly useful when input is uniformly distributed over a range. 
+        For example, consider the following problem. 
+        Sort a large set of floating point numbers which are in range from 0.0 to 
+        1.0 and are uniformly distributed across the range. How do we sort the 
+        numbers efficiently?
       </p>
       <p>
-        The algorithm successively generates permutations of its 
-        input until it finds one that is sorted.
+        A simple way is to apply a comparison based sorting algorithm. 
+        The lower bound for Comparison based sorting algorithm (Merge Sort, 
+        Heap Sort, Quick-Sort .. etc) is Ω(n Log n), i.e., they cannot do 
+        better than nLogn. 
       </p>
       <p>
-        For example, if bogosort is used to sort a deck of cards, it would 
-        consist of checking if the deck were in order, and if it were not, 
-        one would throw the deck into the air, pick the cards up at random, 
-        and repeat the process until the deck is sorted.
+        Can we sort the array in linear time? Counting sort can not be 
+        applied here as we use keys as index in counting sort. Here keys are 
+        floating point numbers.  
+        The idea is to use bucket sort. 
       </p>
-      <h3>PseudoCode:</h3>
+      <h3>Algorithm:</h3>
       <pre>
-  while not Sorted(list) do
-      shuffle (list)
-  done
+bucketSort(arr[], n)
+1) Create n empty buckets (Or lists).
+2) Do following for every array element arr[i].
+.......a) Insert arr[i] into bucket[n * array[i]]
+3) Sort individual buckets using insertion sort.
+4) Concatenate all sorted buckets.
     </pre>
-    <h3>Example:</h3>
-    <p>Let us consider an example array = [3, 2, 5, 1, 0, 4]</p>
-    <pre>
-    4 5 0 3 2 1 (1st shuffling)
-    4 1 3 2 5 0 (2nd shuffling)
-    1 0 3 2 5 4 (3rd shuffling)
-    3 1 0 2 4 5 (4th shuffling)
-    1 4 5 0 3 2 (5th shuffling)
-    .
-    .
-    .
-    0 1 2 3 4 5 (nth shuffling) — Sorted Array
-    </pre>
-    <p>
-      Here, n is unknown because algorithm doesn’t known in which 
-      step the resultant permutation will come out to be sorted.
-    </p>
     `;
   static specifications: string = `
     <p>
-      &#9;<b>Worst Case</b>: O(∞) (since this algorithm has no upper bound)  
+      <b>Worst Case</b>: O(n²) 
     </p>
     <p>
-      &#9;<b>Average Case</b>: O(n*n!)  
-    </p>
-    <p>
-      &#9;<b>Best Case</b>: O(n)(when array given is already sorted)  
-    </p> <br>
-    <p>
-     <b>Auxiliary Space</b>: O(1)  
+      <b>Base and Average Case</b>: O(n + k) 
     </p>
       `;
   static code: string = `
       <pre>
-  import random
-  
-  # Sorts array a[0..n-1] using Bogo sort
-  def bogo_sort(a):
-      n = len(a)
-      while (is_sorted(a) == False):
-          shuffle(a)
+def insertionSort(b):
+for i in range(1, len(b)):
+    up = b[i]
+    j = i - 1
+    while j >= 0 and b[j] > up:
+        b[j + 1] = b[j]
+        j -= 1
+    b[j + 1] = up    
+return b    
+        
+def bucketSort(x):
+arr = []
+slot_num = 10 # 10 means 10 slots, each
+            # slot's size is 0.1
+for i in range(slot_num):
+    arr.append([])
     
-  # To check if array is sorted or not
-  def is_sorted(a):
-      n = len(a)
-      for i in range(0, n - 1):
-          if (a[i] > a[i + 1] ):
-              return False
-      return True
+# Put array elements in different buckets
+for j in x:
+    index_b = int(slot_num * j)
+    arr[index_b].append(j)
+
+# Sort individual buckets
+for i in range(slot_num):
+    arr[i] = insertionSort(arr[i])
     
-  # To generate permuatation of the array
-  def shuffle(a):
-      n = len(a)
-      for i in range (0, n):
-          r = random.randint(0, n - 1)
-          a[i], a[r] = a[r], a[i]
+# concatenate the result
+k = 0
+for i in range(slot_num):
+    for j in range(len(arr[i])):
+        x[k] = arr[i][j]
+        k += 1
+return x
+
+# Driver Code
+x = [0.897, 0.565, 0.656,
+0.1234, 0.665, 0.3434]
+print("Sorted Array is")
+print(bucketSort(x))
+
+# This code is contributed by
+# Oneil Hsiao
     </pre>`;
   static sources: string[] = [
     'https://www.geeksforgeeks.org/bogosort-permutation-sort/',
