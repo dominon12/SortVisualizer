@@ -1,24 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
-import {
-  BubbleSort,
-  InsertionSort,
-  SelectionSort,
-  HeapSort,
-  ShellSort,
-  CountingSort,
-  OddEvenSort,
-  CocktailSort,
-  CycleSort,
-  GnomeSort,
-  CombSort,
-  BogoSort,
-  PancakeSort,
-  StoogeSort,
-  // TimeSort,
-} from '../sortingAlgorithms';
 import { SharedServiceService } from './../shared-service.service';
+
+import { BogoSort } from 'src/algorithms/BogoSort';
+import { BubbleSort } from 'src/algorithms/BubbleSort';
+import { CocktailSort } from 'src/algorithms/CoctailSort';
+import { CombSort } from 'src/algorithms/CombSort';
+import { CountingSort } from 'src/algorithms/CountingSort';
+import { CycleSort } from 'src/algorithms/CycleSort';
+import { GnomeSort } from 'src/algorithms/GnomeSort';
+import { HeapSort } from 'src/algorithms/HeapSort';
+import { InsertionSort } from 'src/algorithms/InsertionSort';
+import { OddEvenSort } from 'src/algorithms/OddEvenSort';
+import { PancakeSort } from 'src/algorithms/PancakeSort';
+import { SelectionSort } from 'src/algorithms/SelectionSort';
+import { ShellSort } from 'src/algorithms/ShellSort';
+import { StoogeSort } from 'src/algorithms/StoogeSort';
 
 @Component({
   selector: 'app-header',
@@ -44,7 +42,6 @@ export class HeaderComponent implements OnInit {
     BogoSort,
     PancakeSort,
     StoogeSort,
-    // TimeSort,
   ];
 
   constructor(

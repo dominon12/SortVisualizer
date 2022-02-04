@@ -1,6 +1,7 @@
-import { ISortingAlgorithm } from '../sortingAlgorithms';
-import { SharedServiceService } from './../shared-service.service';
 import { Component, OnInit } from '@angular/core';
+
+import { ISortingAlgorithm } from 'src/algorithms/SortingAlgorithm';
+import { SharedServiceService } from './../shared-service.service';
 
 @Component({
   selector: 'app-blocks',
