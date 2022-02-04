@@ -133,13 +133,6 @@ print(bucketSort(x))
       }
     }
 
-    // allBuckets.forEach(async (bucket) => {
-    //   this.insertionSort(bucket);
-    //   bucket.forEach(async (element) => {
-    //     await sleep(this.animationSpeed);
-    //     arr.push(element);
-    //   });
-    // });
     return arr;
   }
 

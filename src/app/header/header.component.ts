@@ -19,6 +19,7 @@ import ShellSort from 'src/algorithms/ShellSort';
 import StoogeSort from 'src/algorithms/StoogeSort';
 import QuickSort from 'src/algorithms/QuickSort';
 import BucketSort from 'src/algorithms/BucketSort';
+import RadixSort from 'src/algorithms/RadixSort';
 
 @Component({
   selector: 'app-header',
@@ -43,6 +44,7 @@ export class HeaderComponent implements OnInit {
     OddEvenSort,
     PancakeSort,
     QuickSort,
+    RadixSort,
     SelectionSort,
     ShellSort,
     StoogeSort,
