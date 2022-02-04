@@ -1,7 +1,7 @@
+import SortingAlgorithm from './SortingAlgorithm';
 import { sleep } from 'src/helpers/helper';
-import { SortingAlgorithm } from './SortingAlgorithm';
 
-export class BubbleSort extends SortingAlgorithm {
+export default class BubbleSort extends SortingAlgorithm {
   static description: string = `
       <p>
         Bubble Sort is the simplest sorting algorithm that works 

@@ -1,7 +1,7 @@
+import SortingAlgorithm from './SortingAlgorithm';
 import { sleep } from 'src/helpers/helper';
-import { SortingAlgorithm } from './SortingAlgorithm';
 
-export class CycleSort extends SortingAlgorithm {
+export default class CycleSort extends SortingAlgorithm {
   static description: string = `
       <p>
         Cycle sort is an in-place sorting Algorithm, 

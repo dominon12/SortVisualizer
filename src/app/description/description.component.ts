@@ -1,6 +1,7 @@
-import { SharedServiceService } from './../shared-service.service';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { SortingAlgorithm } from 'src/algorithms/SortingAlgorithm';
+
+import { SharedServiceService } from './../shared-service.service';
+import SortingAlgorithm from 'src/algorithms/SortingAlgorithm';
 
 @Component({
   selector: 'app-description',

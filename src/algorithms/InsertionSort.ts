@@ -1,7 +1,7 @@
+import SortingAlgorithm  from './SortingAlgorithm';
 import { sleep } from 'src/helpers/helper';
-import { SortingAlgorithm } from './SortingAlgorithm';
 
-export class InsertionSort extends SortingAlgorithm {
+export default class InsertionSort extends SortingAlgorithm {
   static description: string = `
       <p>
         Insertion sort is a simple sorting algorithm 

@@ -1,7 +1,7 @@
+import SortingAlgorithm  from './SortingAlgorithm';
 import { sleep } from 'src/helpers/helper';
-import { SortingAlgorithm } from './SortingAlgorithm';
 
-export class GnomeSort extends SortingAlgorithm {
+export default class GnomeSort extends SortingAlgorithm {
   static description: string = `
       <p>
         Gnome Sort also called Stupid sort is based on 

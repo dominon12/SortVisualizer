@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { BubbleSort } from 'src/algorithms/BubbleSort';
+
+import BubbleSort from 'src/algorithms/BubbleSort';
 
 @Injectable({
   providedIn: 'root',

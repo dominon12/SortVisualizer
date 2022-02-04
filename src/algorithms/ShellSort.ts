@@ -1,8 +1,8 @@
 // TODO: do something!
 
-import { SortingAlgorithm } from './SortingAlgorithm';
+import SortingAlgorithm from './SortingAlgorithm';
 
-export class ShellSort extends SortingAlgorithm {
+export default class ShellSort extends SortingAlgorithm {
   static description: string = `
       <p>
         ShellSort is mainly a variation of Insertion Sort. In insertion sort, 

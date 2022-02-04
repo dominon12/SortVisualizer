@@ -1,7 +1,7 @@
+import SortingAlgorithm from './SortingAlgorithm';
 import { sleep } from 'src/helpers/helper';
-import { SortingAlgorithm } from './SortingAlgorithm';
 
-export class SelectionSort extends SortingAlgorithm {
+export default class SelectionSort extends SortingAlgorithm {
   static description: string = `
       <p>
         The selection sort algorithm sorts an array by repeatedly finding the

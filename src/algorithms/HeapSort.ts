@@ -1,7 +1,7 @@
+import SortingAlgorithm from './SortingAlgorithm';
 import { sleep } from 'src/helpers/helper';
-import { SortingAlgorithm } from './SortingAlgorithm';
 
-export class HeapSort extends SortingAlgorithm {
+export default class HeapSort extends SortingAlgorithm {
   static description: string = `
       <p>
         Heap sort is a comparison based sorting 

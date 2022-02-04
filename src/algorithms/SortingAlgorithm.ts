@@ -5,7 +5,7 @@ export interface ISortingAlgorithm {
   sort: () => void;
 }
 
-export abstract class SortingAlgorithm implements ISortingAlgorithm {
+export default abstract class SortingAlgorithm implements ISortingAlgorithm {
   dataset: number[];
   sortedDataset: number[];
   animationSpeed: number;

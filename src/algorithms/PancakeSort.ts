@@ -1,7 +1,7 @@
+import SortingAlgorithm from './SortingAlgorithm';
 import { sleep } from 'src/helpers/helper';
-import { SortingAlgorithm } from './SortingAlgorithm';
 
-export class PancakeSort extends SortingAlgorithm {
+export default class PancakeSort extends SortingAlgorithm {
   static description: string = `
       <p>
         How to sort an array if you are allowed to do only following operation on array:

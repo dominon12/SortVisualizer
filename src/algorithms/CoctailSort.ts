@@ -1,7 +1,7 @@
+import SortingAlgorithm from './SortingAlgorithm';
 import { sleep } from 'src/helpers/helper';
-import { SortingAlgorithm } from './SortingAlgorithm';
 
-export class CocktailSort extends SortingAlgorithm {
+export default class CocktailSort extends SortingAlgorithm {
   static description: string = `
     <p>
       Cocktail Sort is a variation of Bubble sort. 

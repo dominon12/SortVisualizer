@@ -1,7 +1,7 @@
+import SortingAlgorithm  from './SortingAlgorithm';
 import { sleep } from 'src/helpers/helper';
-import { SortingAlgorithm } from './SortingAlgorithm';
 
-export class CountingSort extends SortingAlgorithm {
+export default class CountingSort extends SortingAlgorithm {
   static description: string = `
       <p>
         Counting sort is a sorting technique based on keys between a specific range. 

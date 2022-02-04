@@ -1,7 +1,7 @@
+import SortingAlgorithm  from './SortingAlgorithm';
 import { sleep } from 'src/helpers/helper';
-import { SortingAlgorithm } from './SortingAlgorithm';
 
-export class OddEvenSort extends SortingAlgorithm {
+export default class OddEvenSort extends SortingAlgorithm {
   static description: string = `
       <p>
         This is basically a variation of bubble-sort. This algorithm is

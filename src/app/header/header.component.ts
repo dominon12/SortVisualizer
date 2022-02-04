@@ -3,21 +3,22 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { SharedServiceService } from './../shared-service.service';
 
-import { BogoSort } from 'src/algorithms/BogoSort';
-import { BubbleSort } from 'src/algorithms/BubbleSort';
-import { CocktailSort } from 'src/algorithms/CoctailSort';
-import { CombSort } from 'src/algorithms/CombSort';
-import { CountingSort } from 'src/algorithms/CountingSort';
-import { CycleSort } from 'src/algorithms/CycleSort';
-import { GnomeSort } from 'src/algorithms/GnomeSort';
-import { HeapSort } from 'src/algorithms/HeapSort';
-import { InsertionSort } from 'src/algorithms/InsertionSort';
-import { OddEvenSort } from 'src/algorithms/OddEvenSort';
-import { PancakeSort } from 'src/algorithms/PancakeSort';
-import { SelectionSort } from 'src/algorithms/SelectionSort';
-import { ShellSort } from 'src/algorithms/ShellSort';
-import { StoogeSort } from 'src/algorithms/StoogeSort';
-import { QuickSort } from 'src/algorithms/QuickSort';
+import BogoSort from 'src/algorithms/BogoSort';
+import BubbleSort from 'src/algorithms/BubbleSort';
+import CocktailSort from 'src/algorithms/CoctailSort';
+import CombSort from 'src/algorithms/CombSort';
+import CountingSort from 'src/algorithms/CountingSort';
+import CycleSort from 'src/algorithms/CycleSort';
+import GnomeSort from 'src/algorithms/GnomeSort';
+import HeapSort from 'src/algorithms/HeapSort';
+import InsertionSort from 'src/algorithms/InsertionSort';
+import OddEvenSort from 'src/algorithms/OddEvenSort';
+import PancakeSort from 'src/algorithms/PancakeSort';
+import SelectionSort from 'src/algorithms/SelectionSort';
+import ShellSort from 'src/algorithms/ShellSort';
+import StoogeSort from 'src/algorithms/StoogeSort';
+import QuickSort from 'src/algorithms/QuickSort';
+import BucketSort from 'src/algorithms/BucketSort';
 
 @Component({
   selector: 'app-header',
@@ -29,8 +30,9 @@ export class HeaderComponent implements OnInit {
   algorithmSelectForm: FormGroup;
   selectedAlgorithm: any;
   algorithms = [
-    BubbleSort,
     BogoSort,
+    BubbleSort,
+    BucketSort,
     CocktailSort,
     CombSort,
     CountingSort,
@@ -40,10 +42,10 @@ export class HeaderComponent implements OnInit {
     InsertionSort,
     OddEvenSort,
     PancakeSort,
+    QuickSort,
     SelectionSort,
     ShellSort,
     StoogeSort,
-    QuickSort,
   ];
 
   constructor(

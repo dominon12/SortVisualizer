@@ -1,7 +1,7 @@
+import SortingAlgorithm from './SortingAlgorithm';
 import { sleep } from 'src/helpers/helper';
-import { SortingAlgorithm } from './SortingAlgorithm';
 
-export class StoogeSort extends SortingAlgorithm {
+export default class StoogeSort extends SortingAlgorithm {
   static description: string = `
       <p>
         The Stooge sort is a recursive sorting algorithm. 

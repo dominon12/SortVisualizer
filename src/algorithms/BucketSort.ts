@@ -1,7 +1,7 @@
 import SortingAlgorithm from './SortingAlgorithm';
 import { sleep } from 'src/helpers/helper';
 
-export default class BogoSort extends SortingAlgorithm {
+export default class BucketSort extends SortingAlgorithm {
   static description: string = `
       <p>
         BogoSort also known as permutation sort, stupid sort, slow sort, 
@@ -86,34 +86,75 @@ export default class BogoSort extends SortingAlgorithm {
   ];
 
   async sort() {
-    let isSorted = this.isSorted();
-    while (!isSorted) {
-      // if array isn't sorted, shuffle
-      await sleep(this.animationSpeed);
-      this.shuffle();
-    }
+    this.bucketSort(this.dataset);
   }
 
-  private shuffle() {
-    for (var i = this.dataset.length - 1; i > 0; i--) {
-      var j = Math.floor(Math.random() * (i + 1));
-      var temp = this.dataset[i];
-      this.dataset[i] = this.dataset[j];
-      this.dataset[j] = temp;
+  async bucketSort(arr: number[]) {
+    if (arr.length === 0) {
+      return arr;
     }
-  }
+    let i,
+      minValue = arr[0],
+      maxValue = arr[0],
+      bucketSize = 5;
 
-  private isSorted() {
-    let arrayLength = this.dataset.length;
-    for (let i = 0; i < arrayLength - 1; i++) {
-      if (this.dataset[i] > this.dataset[i + 1]) {
-        return false;
+    arr.forEach((currentVal) => {
+      if (currentVal < minValue) {
+        minValue = currentVal;
+      } else if (currentVal > maxValue) {
+        maxValue = currentVal;
+      }
+    });
+
+    let bucketCount = Math.floor((maxValue - minValue) / bucketSize) + 1;
+    let allBuckets: number[][] = new Array(bucketCount);
+    for (i = 0; i < allBuckets.length; i++) {
+      allBuckets[i] = [];
+    }
+
+    arr.forEach((currentVal) => {
+      allBuckets[Math.floor((currentVal - minValue) / bucketSize)].push(
+        currentVal
+      );
+    });
+
+    arr.length = 0;
+
+    for (let i = 0; i < allBuckets.length; i++) {
+      await this.insertionSort(allBuckets[i]);
+
+      for (let j = 0; j < allBuckets[i].length; j++) {
+        await sleep(this.animationSpeed);
+        arr.push(allBuckets[i][j]);
       }
     }
-    return true;
+
+    // allBuckets.forEach(async (bucket) => {
+    //   this.insertionSort(bucket);
+    //   bucket.forEach(async (element) => {
+    //     await sleep(this.animationSpeed);
+    //     arr.push(element);
+    //   });
+    // });
+    return arr;
+  }
+
+  async insertionSort(arr: number[]) {
+    let length = arr.length;
+    let i, j;
+    for (i = 1; i < length; i++) {
+      let temp = arr[i];
+      for (j = i - 1; j >= 0 && arr[j] > temp; j--) {
+        await sleep(this.animationSpeed);
+        arr[j + 1] = arr[j];
+      }
+      await sleep(this.animationSpeed);
+      arr[j + 1] = temp;
+    }
+    return arr;
   }
 
   static toString() {
-    return 'Bogo Sort';
+    return 'Bucket Sort';
   }
 }

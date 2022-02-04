@@ -1,7 +1,7 @@
 import { sleep } from 'src/helpers/helper';
-import { SortingAlgorithm } from './SortingAlgorithm';
+import SortingAlgorithm from './SortingAlgorithm';
 
-export class CombSort extends SortingAlgorithm {
+export default class CombSort extends SortingAlgorithm {
   static description: string = `
       <p>
         Comb Sort is mainly an improvement over Bubble Sort. 

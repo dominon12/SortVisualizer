@@ -1,7 +1,7 @@
+import SortingAlgorithm from './SortingAlgorithm';
 import { sleep } from 'src/helpers/helper';
-import { SortingAlgorithm } from './SortingAlgorithm';
 
-export class QuickSort extends SortingAlgorithm {
+export default class QuickSort extends SortingAlgorithm {
   static description: string = `
       <p>
         Like Merge Sort, QuickSort is a Divide and Conquer algorithm. 
