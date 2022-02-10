@@ -150,11 +150,11 @@ print(f'Sorted array: {array}')
       index = await this.partition(items, left, right); //index returned from partition
       if (left < index - 1) {
         //more elements on the left side of the pivot
-        this.quickSort(items, left, index - 1);
+        await this.quickSort(items, left, index - 1);
       }
       if (index < right) {
         //more elements on the right side of the pivot
-        this.quickSort(items, index, right);
+        await this.quickSort(items, index, right);
       }
     }
     return items;
